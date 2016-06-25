@@ -1,0 +1,12 @@
+private Button bt1;
+
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        bt1=(Button)findViewByID(R.id.button);
+        bt1.setOnClickListener(new View.OnClickListener){
+          public void OnClick(View view){
+            System.out.println("");
+          }
+        }
+}
