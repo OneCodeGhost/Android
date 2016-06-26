@@ -1,0 +1,15 @@
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+ private ImageButton ibt;
+
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ibt=(ImageButton)findViewByID(R.id.imageButton);
+        ibt.setOnClickListener(this);
+    }
+  
+  public void onClick(View view) {
+        Toast.makeText(MainActivity.this, "无法显示图片", Toast.LENGTH_SHORT).show();
+    }
+}
