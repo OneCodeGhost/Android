@@ -1,0 +1,15 @@
+<MultiAutoCompleteTextView
+        android:completionThreshold="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入内容"
+        android:id="@+id/multiAutoCompleteTextView" />
+        
+        
+private MultiAutoCompleteTextView macTextView;
+private String[] res={"xx","xxx","xxx","xxxx"};
+
+macTextView=(MultiAutoCompleteTextView)findViewByID(R.id.multiAutoCompleteTextView);
+ArrayAdpter<String> adpter = new ArrayAdpter<String> (this,android.R.layout.simple_list_item_1,res);
+macTextView.setAdpter(adpter);
+macTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
