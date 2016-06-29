@@ -1,0 +1,15 @@
+<AutoCompleteTextView
+        android:completionThreshold="2"          //判定在输入多少字符时弹出候选搜索栏
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="搜索"
+        android:id="@+id/autoCompleteTextView" />
+        
+
+
+private AutoCompleteTextView acTextView;
+private String[] res={"xx","xxx","xxxx"};
+
+acTextView=(AutoCompleteTextView)findViewByID(R.id.autoCompleteTextView);
+ArrayAdpter<String> adpter=new ArrayAdpter<String> (this,android.R.layout.simple_list_item_1,res);
+acTextView.setAdpter(adpter);
