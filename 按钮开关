@@ -1,0 +1,25 @@
+<ToggleButton
+        android:checked="false"
+        android:textOn="开"
+        android:textOff="关"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton" />
+        
+<ImageView
+        android:background="@drawable/off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2" />
+        
+public class MainActivity extends AppCompatActivity  implements CompoundButton.OnCheckedChangeListener {        
+    private ToggleButton tb;
+    private ImageView img;
+    tb=(ToggleButton)findViewByID(R.id.toggleButton);
+    img=(ImageView)findViewByID(R.id.imageView2);
+    tb.setOnCheckChangeListener(this);
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        img.setBackgroundResource(b?R.drawable.on:R.drawable.off);
+    }
+}
