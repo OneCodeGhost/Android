@@ -1,0 +1,6 @@
+android:collapseColumns      //隐藏从0开始索引的列
+android:shrinkColumns        //收缩从0开始索引的列
+android:stretchColumns       //拉伸从0开始索引的列
+
+layout_column                //(控件本身使用,从0开始)该控件显示在第几列
+layout_span                  //(控件本身使用,从0开始)该控件占据几列
