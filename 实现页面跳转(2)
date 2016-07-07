@@ -1,0 +1,48 @@
+public class FActivity extends Activity {
+  private Context context;
+  private Button bt2;
+  private TextView tv;
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first);
+        
+        context=this;
+        bt2=(Button)findViewByID(R.id.button_second);
+        tv=(TextView)findViewByID(R.id.textView;)
+        bt2.setOnClickListener(new View.OnClickListener(){
+          public void onClick(View view) {
+            Intent intent=new Intent(context,SActivity.class);
+            startActivityForResult(intent,1);
+        }
+      });
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==2){
+          String cc=data.getStringExtra("xx");
+          tv.setText(cc);
+        }
+    }
+}
+
+
+
+
+public class SActivity extends Activity {
+  private Button bt1;
+  private String content="Hello,World!";
+  
+ protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        bt1=(Button)findViewByID(R.id.button_two);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent2=new Intent();
+                intent2.putExtra("xx",content);
+                setResult(2,intent2);
+                finish();
+            }
+        });
+  }
+}
