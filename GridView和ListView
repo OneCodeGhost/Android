@@ -1,0 +1,29 @@
+    private GridView gridview;
+    private List<Map<String,Object>> datalist;
+    private SimpleAdapter simple;
+    private int[] icon={R.drawable.app,R.drawable.book,R.drawable.calendar,R.drawable.chrome,R.drawable.drive,R.drawable.fanyi,
+                       R.drawable.game,R.drawable.gmail,R.drawable.keep,R.drawable.music,R.drawable.pingyin,R.drawable.play};
+    private String[] iconname={"谷歌应用","谷歌图书","谷歌日历","谷歌浏览器","谷歌硬盘","谷歌翻译","谷歌游戏",
+                               "谷歌邮箱","谷歌记事","谷歌音乐","谷歌拼音","谷歌play"};
+                               
+                               
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        gridview=(GridView)findViewById(R.id.gridView);
+        datalist=new ArrayList<Map<String,Object>>();
+        simple=new SimpleAdapter(this,getdata(),R.layout.buju,new String[]{"img","text"},new int[]{R.id.imageView,R.id.textView});
+        gridview.setAdapter(simple);
+    }
+
+    public List<Map<String,Object>> getdata() {
+        for(int i=0;i<icon.length;i++){
+            Map<String,Object> map =new HashMap<String,Object>();
+            map.put("img",icon[i]);
+            map.put("text",iconname[i]);
+            datalist.add(map);
+        }
+
+        return datalist;
+    }
+}
