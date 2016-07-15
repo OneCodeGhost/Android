@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String cityname= (String) adpter.getItem(i);
+        //String cityname=list.get(i);
         tv.setText("现在所选的城市为:"+cityname);
     }
 }
