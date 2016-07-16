@@ -1,0 +1,13 @@
+android:max="100"                     //最大值
+android:progress="50"                 //第一进度条的值
+android:secondaryProgress="80"        //第二进度条的值
+
+getMax()                                //获取最大值
+getProgress()                           //获取第一进度条的值
+getsecondaryProgress()                  //获取第二进度条的值
+
+incrementProgressBy()                   //增加第一进度条的值
+incrementSecondaryProgressBy()          //增加第二进度条的值
+
+setProgress()                           //设置第一进度条的值
+setSecondaryProgress()                  //设置第二进度条的值
