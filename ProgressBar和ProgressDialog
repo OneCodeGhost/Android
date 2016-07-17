@@ -1,0 +1,72 @@
+    private ProgressBar pro;
+    private Button add;
+    private Button reduce;
+    private Button reset;
+    private TextView tv;
+    private Button click;
+    private ProgressDialog prodialog;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        pro=(ProgressBar)findViewById(R.id.progressBar);
+        add=(Button)findViewById(R.id.add);
+        reduce=(Button)findViewById(R.id.reduce);
+        reset=(Button)findViewById(R.id.reset);
+        click=(Button)findViewById(R.id.click);
+        tv=(TextView)findViewById(R.id.textView);
+
+        int first=pro.getProgress();
+        int second=pro.getSecondaryProgress();
+        int max=pro.getMax();
+
+        tv.setText("当前第一进度为:"+(int)(first/(float)max*100)+"% 当前第二进度为:"+(int)(second/(float)max*100)+"%");
+
+        add.setOnClickListener(this);
+        reduce.setOnClickListener(this);
+        reset.setOnClickListener(this);
+        click.setOnClickListener(this);
+
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.add:
+                pro.incrementProgressBy(10);
+                pro.incrementSecondaryProgressBy(10);
+                break;
+            case R.id.reduce:
+                pro.incrementProgressBy(-10);
+                pro.incrementSecondaryProgressBy(-10);
+                break;
+            case R.id.reset:
+                pro.setProgress(50);
+                pro.setSecondaryProgress(80);
+                break;
+            case R.id.click:
+                prodialog=new ProgressDialog(this);
+                prodialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                prodialog.setMax(100);
+                prodialog.incrementProgressBy(50);
+                prodialog.setIndeterminate(false);
+                prodialog.setIcon(R.mipmap.ic_launcher);
+                prodialog.setTitle("加载中");
+                prodialog.setMessage("正在加载....");
+                prodialog.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity.this,"确定",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                prodialog.setCancelable(true);
+                prodialog.show();
+                break;
+        }
+        tv.setText("当前第一进度为:"+(int)(pro.getProgress()/(float)pro.getMax()*100)+
+                   "% 当前第二进度为:"+(int)(pro.getSecondaryProgress()/(float)pro.getMax()*100)+"%");
+    }
+}
