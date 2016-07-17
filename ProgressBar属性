@@ -11,3 +11,5 @@ incrementSecondaryProgressBy()          //增加第二进度条的值
 
 setProgress()                           //设置第一进度条的值
 setSecondaryProgress()                  //设置第二进度条的值
+
+setIndeterminate()                      //是否精确显示,false为精确显示,true为不精确显示
