@@ -1,0 +1,76 @@
+public class MainActivity extends Activity {
+
+//    private String url="http://bing.com";
+    private WebView web;
+    private ProgressDialog dialog;
+
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+//        Uri uri=Uri.parse(url);
+//        Intent intent=new Intent(Intent.ACTION_VIEW,uri);
+//        startActivity(intent);
+
+        web=(WebView)findViewById(R.id.webView);
+        web.loadUrl("http://acfun.tv");
+
+        web.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                web.loadUrl(url);
+                return true;
+            }
+        });
+
+        WebSettings setting=web.getSettings();
+        setting.setJavaScriptEnabled(true);
+        setting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
+        web.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if(newProgress==100){
+                    closeProgress();
+                }
+                else{
+                    openProgress(newProgress);
+                }
+            }
+        });
+
+
+    }
+
+    private void openProgress(int newProgress) {
+        if(dialog==null){
+            dialog=new ProgressDialog(MainActivity.this);
+            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            dialog.setTitle("正在加载");
+            dialog.setProgress(newProgress);
+            dialog.show();
+        }
+    }
+
+    private void closeProgress() {
+        if(dialog!=null && dialog.isShowing()){
+            dialog.dismiss();
+            dialog=null;
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            if(web.canGoBack()){
+                web.goBack();
+                return true;
+            }
+            else{
+                System.exit(0);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+}
